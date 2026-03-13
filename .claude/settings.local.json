@@ -41,10 +41,12 @@
       "Bash(curl -s https://raw.githubusercontent.com/andrehrferreira/claude-net/main/.claude-plugin/marketplace.json)",
       "Bash(git push:*)",
       "Bash(git remote:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(claude marketplace:*)"
     ],
     "additionalDirectories": [
-      "\\tmp"
+      "\\tmp",
+      "C:\\Users\\Bolado\\.claude"
     ]
   }
 }

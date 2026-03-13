@@ -202,6 +202,25 @@ async function install(): Promise<void> {
     await ensureDirs();
     console.log('  ✓ Created ~/.claude-net/ directory');
 
+    // Register in installed_plugins.json for Claude Code discovery
+    const installedPluginsPath = resolve(homedir(), '.claude', 'plugins', 'installed_plugins.json');
+    let installedPlugins: any = { version: 2, plugins: {} };
+    if (existsSync(installedPluginsPath)) {
+      const content = readFileSync(installedPluginsPath, 'utf-8');
+      installedPlugins = JSON.parse(content);
+    }
+
+    installedPlugins.plugins['claude-net'] = [{
+      scope: 'user',
+      installPath: PLUGIN_DIR,
+      version: '0.1.1',
+      installedAt: new Date().toISOString(),
+      lastUpdated: new Date().toISOString(),
+    }];
+
+    writeFileSync(installedPluginsPath, JSON.stringify(installedPlugins, null, 2));
+    console.log('  ✓ Registered in installed_plugins.json');
+
     console.log('\n[claude-net] ✓ Installation complete!\n');
   } catch (error) {
     console.error('[ERROR]', (error as Error).message);
