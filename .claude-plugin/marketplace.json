@@ -1,5 +1,4 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "claude-net-marketplace",
   "version": "0.1.0",
   "description": "Agent coordination network — prevents conflicts between multiple Claude Code tabs and agents via file-based IPC",

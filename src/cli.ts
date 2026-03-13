@@ -148,8 +148,8 @@ async function install(): Promise<void> {
       console.log('  ✓ Copied plugin.json');
     }
 
-    // Copy marketplace.json from root
-    const marketplaceSrc = resolve(process.cwd(), 'marketplace.json');
+    // Copy marketplace.json from .claude-plugin (local format)
+    const marketplaceSrc = resolve(process.cwd(), '.claude-plugin', 'marketplace.json');
     const marketplaceDest = resolve(PLUGIN_DIR, 'marketplace.json');
     if (existsSync(marketplaceSrc)) {
       copyFileSync(marketplaceSrc, marketplaceDest);
