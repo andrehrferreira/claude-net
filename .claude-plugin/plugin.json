@@ -6,9 +6,6 @@
     "name": "claude-net"
   },
   "homepage": "https://github.com/andrehrferreira/claude-net",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/andrehrferreira/claude-net"
-  },
+  "repository": "https://github.com/andrehrferreira/claude-net",
   "license": "MIT"
 }

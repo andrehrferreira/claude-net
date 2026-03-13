@@ -42,7 +42,9 @@
       "Bash(git push:*)",
       "Bash(git remote:*)",
       "Bash(git config:*)",
-      "Bash(claude marketplace:*)"
+      "Bash(claude marketplace:*)",
+      "Bash(claude code:*)",
+      "Bash(unset CLAUDECODE)"
     ],
     "additionalDirectories": [
       "\\tmp",

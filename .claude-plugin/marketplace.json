@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "claude-net",
-      "source": ".",
+      "source": "./.claude-plugin",
       "description": "Agent coordination network — prevents conflicts between multiple Claude Code tabs and agents via file-based IPC",
       "version": "0.1.0",
       "repository": "https://github.com/andrehrferreira/claude-net",
