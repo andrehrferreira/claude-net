@@ -15,7 +15,10 @@
       "author": {
         "name": "claude-net"
       },
-      "source": "./.claude-plugin",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/andrehrferreira/claude-net.git"
+      },
       "category": "productivity",
       "repository": "https://github.com/andrehrferreira/claude-net",
       "homepage": "https://github.com/andrehrferreira/claude-net"
