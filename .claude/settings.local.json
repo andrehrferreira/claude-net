@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/Bolado/.claude/projects/**)",
+      "Bash(claude hooks:*)",
+      "Bash(claude plugin:*)",
+      "Bash(claude plugins:*)",
+      "Bash(claude mcp:*)",
+      "Read(//c/Users/Bolado/.claude/plugins/**)",
+      "Bash(cat ~/.claude/plugins/*/manifest.json)",
+      "mcp__rulebook__rulebook_task_create",
+      "mcp__rulebook__rulebook_task_list",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh api:*)"
+    ]
+  }
+}
