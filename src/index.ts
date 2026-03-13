@@ -39,3 +39,12 @@ export {
   searchHistory,
 } from './core/history.js';
 export type { HistoryEntry } from './core/history.js';
+export {
+  sendMessage,
+  getInbox,
+  markMessageAsRead,
+  listMessages,
+  broadcastMessage,
+  clearOldMessages,
+} from './core/message-bus.js';
+export type { Message } from './core/message-bus.js';
