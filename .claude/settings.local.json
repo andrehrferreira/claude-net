@@ -36,7 +36,10 @@
       "Read(//f/Node/hivellm/rulebook/**)",
       "Bash(npm pack:*)",
       "Bash(npm publish:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(npm view:*)",
+      "Bash(curl -s https://raw.githubusercontent.com/andrehrferreira/claude-net/main/.claude-plugin/marketplace.json)",
+      "Bash(git push:*)"
     ],
     "additionalDirectories": [
       "\\tmp"
