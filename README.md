@@ -30,23 +30,60 @@ When using Claude Code with multiple VSCode tabs on the same project, agents fre
 
 **How it works**: claude-net installs as a global Claude Code plugin with lifecycle hooks. Every agent registers on session start, updates status on every action, and checks for conflicts before editing files or running commands. All communication happens through JSON files in `~/.claude-net/` — no database, no server, no external dependencies.
 
+## Installation
+
+### Option 1: Install from npm (Recommended)
+
+```bash
+# One-time setup — install plugin globally
+npx claude-net install
+
+# Verify installation
+npx claude-net status
+
+# Start using it — reload Claude Code or open new tab
+```
+
+The plugin will be installed to `~/.claude/plugins/claude-net/` and activated automatically.
+
+### Option 2: Install from Local Directory
+
+If you're developing locally or want to test an unpublished version:
+
+```bash
+# Add the local marketplace
+claude plugin marketplace add /path/to/claude-net
+
+# Install the plugin
+claude plugin install claude-net
+
+# Test via reload or new tab
+```
+
+### Option 3: Test Without Installing
+
+To test the plugin without installation:
+
+```bash
+# Run Claude Code with plugin loaded
+claude --plugin-dir /path/to/claude-net
+```
+
 ## Quick Start
 
 ```bash
-# Install the plugin globally (one-time setup)
-npx claude-net install
+# After installation, use the CLI to monitor:
+npx claude-net status           # View active agents
+npx claude-net errors           # Check build/test errors
+npx claude-net logs             # See action history
+npx claude-net clean            # Remove stale agents
 
-# Check network status
-npx claude-net status
-
-# View recent errors shared across agents
-npx claude-net errors
-
-# Uninstall
-npx claude-net uninstall
+# Inside Claude Code, use slash commands:
+/claude-net:status              # Show network status
+/claude-net:logs                # Show recent actions
 ```
 
-That's it. After installation, every Claude Code session automatically joins the network. No per-project configuration needed.
+After installation, every Claude Code session automatically joins the network. **No per-project configuration needed** — the plugin works globally across all projects and tabs.
 
 ---
 
@@ -306,6 +343,53 @@ Global configuration lives in `~/.claude-net/config.json`:
 | Communication | Model calls tools explicitly | Automatic via lifecycle hooks |
 
 claude-net is a **plugin** because it needs to work across all projects and tabs without per-project configuration. Hooks provide automatic, transparent integration — agents don't need to explicitly call coordination tools.
+
+---
+
+## Troubleshooting
+
+### Plugin not appearing in "Manage Plugins"
+
+1. Make sure you ran `npx claude-net install` successfully
+2. Restart Claude Code completely (close all tabs and reopen)
+3. Check that plugin is registered: `claude plugin list | grep claude-net`
+4. If still not showing, try reinstalling:
+   ```bash
+   npx claude-net uninstall
+   npx claude-net install
+   ```
+
+### Agents not registering (status shows "No active agents")
+
+1. This is normal — agents only register when a SessionStart hook fires
+2. Hooks fire when you **open a new Claude Code session** (new tab/refresh)
+3. If you've just opened a tab, wait a few seconds for the hook to execute
+4. Check that hooks.json is properly configured:
+   ```bash
+   cat ~/.claude/plugins/claude-net/hooks.json | grep -A 3 SessionStart
+   ```
+
+### File locks not working
+
+1. Make sure PreToolUse hook is configured:
+   ```bash
+   cat ~/.claude/plugins/claude-net/hooks.json | grep -A 3 PreToolUse
+   ```
+2. Only Edit/Write/Bash tools are monitored — other tools won't trigger locks
+3. Locks expire after 5 minutes of inactivity (configurable in `~/.claude-net/config.json`)
+
+### Delete everything and start fresh
+
+```bash
+# Remove plugin
+npx claude-net uninstall
+
+# Clear all state
+rm -rf ~/.claude-net/
+
+# Reinstall
+npx claude-net install
+```
 
 ---
 
