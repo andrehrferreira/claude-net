@@ -31,7 +31,9 @@
       "Bash(node dist/cli.js install)",
       "Bash(node bin/claude-net.js status)",
       "Bash(git add:*)",
-      "Read(//c/Users/Bolado/.claude/**)"
+      "Read(//c/Users/Bolado/.claude/**)",
+      "Bash(find ~/.claude/plugins/rulebook -type f -name *.json)",
+      "Read(//f/Node/hivellm/rulebook/**)"
     ],
     "additionalDirectories": [
       "\\tmp"
