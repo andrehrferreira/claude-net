@@ -22,3 +22,20 @@ export {
   listLocks,
 } from './core/file-lock.js';
 export type { LockInfo } from './core/file-lock.js';
+export {
+  saveBuildError,
+  saveTestError,
+  getLastBuildError,
+  getLastTestError,
+  listErrors,
+  listErrorsByAgent,
+  clearOldErrors,
+} from './core/error-store.js';
+export type { BuildError, TestError, ErrorRecord } from './core/error-store.js';
+export {
+  recordEvent,
+  getSessionHistory,
+  getLastSessionState,
+  searchHistory,
+} from './core/history.js';
+export type { HistoryEntry } from './core/history.js';

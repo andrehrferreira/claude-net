@@ -3,6 +3,8 @@ import { readJSON } from '../utils/read-json.js';
 import { paths } from '../utils/paths.js';
 import { updateAgent } from '../core/agent-registry.js';
 import { releaseLock } from '../core/file-lock.js';
+import { recordEvent } from '../core/history.js';
+import { saveBuildError, saveTestError } from '../core/error-store.js';
 
 interface SessionState {
   agentId: string;
@@ -37,6 +39,17 @@ async function main(): Promise<void> {
 
   const agentId = state.agentId;
 
+  // Record all actions in history
+  await recordEvent({
+    timestamp: new Date().toISOString(),
+    agentId,
+    sessionId: input.session_id,
+    event: 'tool_executed',
+    tool: input.tool_name,
+    toolInput: input.tool_input,
+    result: input.tool_output?.slice(0, 500), // Truncate long outputs
+  });
+
   // Release file lock after edit/write completes
   if (input.tool_name === 'Edit' || input.tool_name === 'Write') {
     const filePath = input.tool_input.file_path as string | undefined;
@@ -45,10 +58,26 @@ async function main(): Promise<void> {
     }
   }
 
-  // Reset status after build/test completes
+  // Check for build/test errors and save them
   if (input.tool_name === 'Bash') {
     const command = (input.tool_input.command as string) || '';
-    if (isBuildCommand(command) || isTestCommand(command)) {
+    const output = input.tool_output || '';
+
+    if (isBuildCommand(command)) {
+      // Check for build failure indicators
+      if (output.includes('error') || output.includes('failed') || output.includes('ERR!')) {
+        await saveBuildError(agentId, command, 1, output, output);
+      }
+      await updateAgent(agentId, { status: 'idle' });
+    } else if (isTestCommand(command)) {
+      // Check for test failure indicators
+      const failedMatch = output.match(/(\d+)\s+failed/i);
+      const totalMatch = output.match(/(\d+)\s+(?:tests?|specs?)/i);
+      if (failedMatch) {
+        const failed = parseInt(failedMatch[1], 10);
+        const total = totalMatch ? parseInt(totalMatch[1], 10) : failed;
+        await saveTestError(agentId, command, failed, total, output);
+      }
       await updateAgent(agentId, { status: 'idle' });
     }
   }

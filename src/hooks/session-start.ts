@@ -6,6 +6,8 @@ import { paths } from '../utils/paths.js';
 import { atomicWriteJSON } from '../utils/atomic-write.js';
 import { readJSON } from '../utils/read-json.js';
 import { listActiveAgents, cleanupStaleAgents } from '../core/agent-registry.js';
+import { getLastSessionState } from '../core/history.js';
+import { getLastBuildError, getLastTestError } from '../core/error-store.js';
 
 interface SessionState {
   agentId: string;
@@ -33,6 +35,29 @@ async function main(): Promise<void> {
 
   const lines: string[] = [];
   lines.push(`[claude-net] Agent ${agentId} registered.`);
+
+  // Check for recent build/test errors
+  const lastBuildError = await getLastBuildError();
+  const lastTestError = await getLastTestError();
+
+  if (lastBuildError || lastTestError) {
+    lines.push('[claude-net] ⚠️ Recent errors found:');
+    if (lastBuildError) {
+      lines.push(`  - Build error from ${lastBuildError.agentId}: ${lastBuildError.command}`);
+    }
+    if (lastTestError) {
+      lines.push(
+        `  - Test error from ${lastTestError.agentId}: ${lastTestError.failedTests}/${lastTestError.totalTests} failed`,
+      );
+    }
+    lines.push('[claude-net] Review errors before running build/test again.');
+  }
+
+  // Check for recovery: last session state
+  const lastSessionState = await getLastSessionState(agentId, 10);
+  if (lastSessionState.length > 0) {
+    lines.push(`[claude-net] 📋 Last session had ${lastSessionState.length} action(s).`);
+  }
 
   if (otherAgents.length > 0) {
     lines.push(`[claude-net] ${otherAgents.length} other agent(s) active:`);
