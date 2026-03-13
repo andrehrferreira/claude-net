@@ -1,7 +1,7 @@
 {
   "name": "claude-net",
   "description": "Agent coordination network — prevents conflicts between multiple Claude Code tabs and agents via file-based IPC",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": {
     "name": "claude-net"
   },
