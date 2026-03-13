@@ -22,7 +22,15 @@
       "Bash(npm run:*)",
       "Bash(find /f/Node/claude-net/tests -type f -name *.ts)",
       "Bash(npm test:*)",
-      "Read(//f/Node/claude-net/**)"
+      "Read(//f/Node/claude-net/**)",
+      "Bash(npx claude-net:*)",
+      "Bash(node bin/claude-net.js install)",
+      "Bash(node --trace-uncaught bin/claude-net.js install)",
+      "Bash(node -e \"import\\(''./dist/cli.js''\\).then\\(m => console.log\\(Object.keys\\(m\\)\\)\\)\")",
+      "Bash(echo \"Exit code: $?\")",
+      "Bash(node dist/cli.js install)",
+      "Bash(node bin/claude-net.js status)",
+      "Bash(git add:*)"
     ],
     "additionalDirectories": [
       "\\tmp"

@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { existsSync, copyFileSync, mkdirSync } from 'node:fs';
+import { existsSync, copyFileSync, mkdirSync, readdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { listActiveAgents } from './core/agent-registry.js';
 import { listLocks } from './core/file-lock.js';
@@ -159,10 +159,8 @@ async function install(): Promise<void> {
     // Copy compiled hooks and core modules
     const copyDir = (src: string, dest: string): void => {
       mkdirSync(dest, { recursive: true });
-      const { readdirSync } = require('fs');
-      const { copyFileSync: copy } = require('fs');
       for (const file of readdirSync(src)) {
-        copy(resolve(src, file), resolve(dest, file));
+        copyFileSync(resolve(src, file), resolve(dest, file));
       }
     };
 
@@ -175,7 +173,7 @@ async function install(): Promise<void> {
     const claudeConfigPath = resolve(homedir(), '.claude', 'settings.json');
     let config: any = {};
     if (existsSync(claudeConfigPath)) {
-      const content = require('fs').readFileSync(claudeConfigPath, 'utf-8');
+      const content = readFileSync(claudeConfigPath, 'utf-8');
       config = JSON.parse(content);
     }
 
@@ -185,7 +183,7 @@ async function install(): Promise<void> {
     }
 
     mkdirSync(resolve(homedir(), '.claude'), { recursive: true });
-    require('fs').writeFileSync(claudeConfigPath, JSON.stringify(config, null, 2));
+    writeFileSync(claudeConfigPath, JSON.stringify(config, null, 2));
     console.log('  ✓ Registered in ~/.claude/settings.json');
 
     // Create ~/.claude-net/ if not exists
@@ -200,7 +198,6 @@ async function install(): Promise<void> {
 }
 
 async function uninstall(): Promise<void> {
-  const { rmSync } = require('fs');
   try {
     if (existsSync(PLUGIN_DIR)) {
       rmSync(PLUGIN_DIR, { recursive: true, force: true });
@@ -210,10 +207,10 @@ async function uninstall(): Promise<void> {
     // Remove from Claude settings
     const claudeConfigPath = resolve(homedir(), '.claude', 'settings.json');
     if (existsSync(claudeConfigPath)) {
-      const content = require('fs').readFileSync(claudeConfigPath, 'utf-8');
+      const content = readFileSync(claudeConfigPath, 'utf-8');
       const config = JSON.parse(content);
       config.plugins = (config.plugins || []).filter((p: string) => p !== 'claude-net');
-      require('fs').writeFileSync(claudeConfigPath, JSON.stringify(config, null, 2));
+      writeFileSync(claudeConfigPath, JSON.stringify(config, null, 2));
       console.log('[claude-net] ✓ Unregistered from ~/.claude/settings.json');
     }
 
@@ -276,4 +273,8 @@ Commands:
   }
 }
 
-main().catch(() => process.exit(1));
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch(() => process.exit(1));
+}
+
+export { main };
