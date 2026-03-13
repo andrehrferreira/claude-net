@@ -39,7 +39,8 @@
       "WebSearch",
       "Bash(npm view:*)",
       "Bash(curl -s https://raw.githubusercontent.com/andrehrferreira/claude-net/main/.claude-plugin/marketplace.json)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git remote:*)"
     ],
     "additionalDirectories": [
       "\\tmp"
