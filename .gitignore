@@ -29,3 +29,5 @@ node_modules/
 dist/
 coverage/
 *.tsbuildinfo
+/.claude/settings.local.json
+settings.local.json
