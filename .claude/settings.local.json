@@ -53,7 +53,9 @@
       "Bash(mkdir -p ~/.claude-net echo '{\"\"\"\"agentId\"\"\"\":\"\"\"\"test-agent-123\"\"\"\"}')",
       "Bash(~/.claude-net/session-test-session-123.json __NEW_LINE_346d07c29d80558a__ echo '{:*)",
       "Bash(node ~/.claude/plugins/claude-net/hooks/pre-tool.js __NEW_LINE_346d07c29d80558a__ echo \"\" echo \"=== Locks ===\" ls -la ~/.claude-net/locks/)",
-      "Bash(cat ~/.claude-net/locks/*.lock)"
+      "Bash(cat ~/.claude-net/locks/*.lock)",
+      "Bash(npx claude-net@0.1.2 status)",
+      "Bash(npm exec:*)"
     ],
     "additionalDirectories": [
       "\\tmp",
