@@ -1,25 +1,24 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "claude-net-marketplace",
+  "version": "0.1.0",
+  "description": "Agent coordination network — prevents conflicts between multiple Claude Code tabs and agents via file-based IPC",
   "owner": {
-    "name": "claude-net"
+    "name": "claude-net",
+    "email": "andrehrf@gmail.com"
   },
   "plugins": [
     {
       "name": "claude-net",
-      "source": "npm",
-      "package": "claude-net",
       "description": "Agent coordination network — prevents conflicts between multiple Claude Code tabs and agents via file-based IPC",
       "version": "0.1.0",
+      "author": {
+        "name": "claude-net"
+      },
+      "source": ".",
+      "category": "productivity",
       "repository": "https://github.com/andrehrferreira/claude-net",
-      "homepage": "https://github.com/andrehrferreira/claude-net",
-      "keywords": [
-        "coordination",
-        "agents",
-        "file-locking",
-        "ipc",
-        "multi-agent",
-        "conflict-prevention"
-      ]
+      "homepage": "https://github.com/andrehrferreira/claude-net"
     }
   ]
 }
