@@ -1,7 +1,5 @@
 {
   "name": "claude-net-marketplace",
-  "version": "0.1.0",
-  "description": "Agent coordination network — prevents conflicts between multiple Claude Code tabs and agents via file-based IPC",
   "owner": {
     "name": "claude-net",
     "email": "andrehrf@gmail.com"
@@ -9,13 +7,9 @@
   "plugins": [
     {
       "name": "claude-net",
+      "source": ".",
       "description": "Agent coordination network — prevents conflicts between multiple Claude Code tabs and agents via file-based IPC",
       "version": "0.1.0",
-      "author": {
-        "name": "claude-net"
-      },
-      "source": ".claude-plugin",
-      "category": "productivity",
       "repository": "https://github.com/andrehrferreira/claude-net",
       "homepage": "https://github.com/andrehrferreira/claude-net"
     }
