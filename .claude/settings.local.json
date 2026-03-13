@@ -44,7 +44,16 @@
       "Bash(git config:*)",
       "Bash(claude marketplace:*)",
       "Bash(claude code:*)",
-      "Bash(unset CLAUDECODE)"
+      "Bash(unset CLAUDECODE)",
+      "Read(//c/Users/Bolado/.claude-net/**)",
+      "Bash(/tmp/test_plugin.md:*)",
+      "Read(//tmp/**)",
+      "Bash(node ~/.claude/plugins/claude-net/hooks/pre-tool.js __NEW_LINE_d4d7400f5594cb43__ echo \"Exit code: $?\" ls -la ~/.claude-net/locks/)",
+      "Bash(node ~/.claude/plugins/claude-net/hooks/pre-tool.js __NEW_LINE_8288bcefd0ce04ea__ echo \"Exit code: $?\" echo \"\" echo \"=== Locks ===\" ls -la ~/.claude-net/locks/)",
+      "Bash(mkdir -p ~/.claude-net echo '{\"\"\"\"agentId\"\"\"\":\"\"\"\"test-agent-123\"\"\"\"}')",
+      "Bash(~/.claude-net/session-test-session-123.json __NEW_LINE_346d07c29d80558a__ echo '{:*)",
+      "Bash(node ~/.claude/plugins/claude-net/hooks/pre-tool.js __NEW_LINE_346d07c29d80558a__ echo \"\" echo \"=== Locks ===\" ls -la ~/.claude-net/locks/)",
+      "Bash(cat ~/.claude-net/locks/*.lock)"
     ],
     "additionalDirectories": [
       "\\tmp",
