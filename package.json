@@ -46,6 +46,9 @@
     "hooks/",
     "commands/",
     "skills/",
-    "agents/"
+    "agents/",
+    "marketplace.json",
+    "README.md",
+    "LICENSE"
   ]
 }
