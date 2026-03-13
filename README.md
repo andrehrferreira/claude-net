@@ -6,9 +6,9 @@
 [![Node.js](https://img.shields.io/badge/Node.js-20+-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-[![Tests](https://img.shields.io/github/actions/workflow/status/YOUR_ORG/claude-net/test.yml?label=tests&logo=github)](https://github.com/YOUR_ORG/claude-net/actions/workflows/test.yml)
-[![Coverage](https://img.shields.io/codecov/c/github/YOUR_ORG/claude-net?logo=codecov&logoColor=white)](https://codecov.io/gh/YOUR_ORG/claude-net)
-[![Build](https://img.shields.io/github/actions/workflow/status/YOUR_ORG/claude-net/build.yml?label=build&logo=github)](https://github.com/YOUR_ORG/claude-net/actions/workflows/build.yml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/andrehrferreira/claude-net/test.yml?label=tests&logo=github)](https://github.com/andrehrferreira/claude-net/actions/workflows/test.yml)
+[![Coverage](https://img.shields.io/codecov/c/github/andrehrferreira/claude-net?logo=codecov&logoColor=white)](https://codecov.io/gh/andrehrferreira/claude-net)
+[![Build](https://img.shields.io/github/actions/workflow/status/andrehrferreira/claude-net/build.yml?label=build&logo=github)](https://github.com/andrehrferreira/claude-net/actions/workflows/build.yml)
 
 > A Claude Code plugin that creates a communication network between all VSCode tabs and agents, preventing conflicts and enabling coordination via file-based IPC.
 
@@ -335,4 +335,4 @@ MIT
 
 ---
 
-**Links**: [Issues](https://github.com/YOUR_ORG/claude-net/issues) • [Discussions](https://github.com/YOUR_ORG/claude-net/discussions)
+**Links**: [Issues](https://github.com/andrehrferreira/claude-net/issues) • [Discussions](https://github.com/andrehrferreira/claude-net/discussions)

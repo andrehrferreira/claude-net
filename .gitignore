@@ -23,3 +23,9 @@ Thumbs.db
 logs/
 temp/
 tmp/
+
+# Node / TypeScript
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo

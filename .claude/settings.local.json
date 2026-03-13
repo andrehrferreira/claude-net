@@ -11,7 +11,14 @@
       "mcp__rulebook__rulebook_task_create",
       "mcp__rulebook__rulebook_task_list",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Read(//f/tmp/**)",
+      "Bash(find . -type f -name *.md -o -name *.json)",
+      "Bash(find /f/Node/claude-net/.rulebook/specs -type f -name *.md)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(npm install:*)",
+      "Bash(npx vitest:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

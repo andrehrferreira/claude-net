@@ -1,0 +1,48 @@
+{
+  "name": "claude-net",
+  "version": "0.1.0",
+  "description": "A Claude Code plugin that creates a communication network between all VSCode tabs and agents, preventing conflicts and enabling coordination via file-based IPC.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "claude-net": "bin/claude-net.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src/ tests/",
+    "lint:fix": "eslint src/ tests/ --fix"
+  },
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "agent-coordination",
+    "multi-agent",
+    "ipc"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^3.0.0",
+    "eslint": "^9.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "files": [
+    "dist/",
+    "bin/",
+    ".claude-plugin/",
+    "hooks/",
+    "commands/",
+    "skills/",
+    "agents/"
+  ]
+}

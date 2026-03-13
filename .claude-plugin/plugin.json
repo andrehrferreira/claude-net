@@ -1,0 +1,14 @@
+{
+  "name": "claude-net",
+  "description": "Agent coordination network — prevents conflicts between multiple Claude Code tabs and agents via file-based IPC",
+  "version": "0.1.0",
+  "author": {
+    "name": "claude-net"
+  },
+  "homepage": "https://github.com/andrehrferreira/claude-net",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrehrferreira/claude-net"
+  },
+  "license": "MIT"
+}
