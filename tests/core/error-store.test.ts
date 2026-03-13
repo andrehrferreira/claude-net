@@ -214,7 +214,7 @@ describe('error-store', () => {
   });
 });
 
-const { recordEvent, getSessionHistory, getLastSessionState, searchHistory } = await import(
+const { recordEvent, getSessionHistory, searchHistory } = await import(
   '../../src/core/history.js'
 );
 

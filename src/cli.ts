@@ -1,12 +1,10 @@
 import { resolve } from 'node:path';
 import { existsSync, copyFileSync, mkdirSync } from 'node:fs';
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { listActiveAgents } from './core/agent-registry.js';
 import { listLocks } from './core/file-lock.js';
 import { listErrors } from './core/error-store.js';
 import { listMessages } from './core/message-bus.js';
-import { paths } from './utils/paths.js';
 import { ensureDirs } from './utils/ensure-dirs.js';
 
 const PLUGIN_HOME = resolve(homedir(), '.claude', 'plugins');
@@ -130,7 +128,6 @@ async function install(): Promise<void> {
 
     // Copy plugin files from dist to ~/.claude/plugins/claude-net/
     const distDir = resolve(process.cwd(), 'dist');
-    const srcDir = resolve(process.cwd(), 'src');
 
     if (!existsSync(distDir)) {
       console.error('[ERROR] dist/ directory not found. Run `npm run build` first.');

@@ -1,7 +1,7 @@
 import { readStdinJSON, type PreToolUseInput } from './stdin.js';
 import { readJSON } from '../utils/read-json.js';
 import { paths } from '../utils/paths.js';
-import { acquireLock, checkLock } from '../core/file-lock.js';
+import { acquireLock } from '../core/file-lock.js';
 import { updateAgent, listActiveAgents } from '../core/agent-registry.js';
 
 interface SessionState {

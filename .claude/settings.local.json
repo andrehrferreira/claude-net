@@ -18,7 +18,14 @@
       "WebFetch(domain:docs.anthropic.com)",
       "Bash(npm install:*)",
       "Bash(npx vitest:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(find /f/Node/claude-net/tests -type f -name *.ts)",
+      "Bash(npm test:*)",
+      "Read(//f/Node/claude-net/**)"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
     ]
   }
 }

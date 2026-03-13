@@ -4,7 +4,6 @@ import { registerAgent } from '../core/agent-registry.js';
 import { ensureDirs } from '../utils/ensure-dirs.js';
 import { paths } from '../utils/paths.js';
 import { atomicWriteJSON } from '../utils/atomic-write.js';
-import { readJSON } from '../utils/read-json.js';
 import { listActiveAgents, cleanupStaleAgents } from '../core/agent-registry.js';
 import { getLastSessionState } from '../core/history.js';
 import { getLastBuildError, getLastTestError } from '../core/error-store.js';

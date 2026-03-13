@@ -28,7 +28,7 @@ function getHistoryFile(agentId: string, sessionId: string): string {
 
 export async function recordEvent(entry: HistoryEntry): Promise<void> {
   await ensureDirs();
-  const dir = await getHistoryDir(entry.agentId);
+  await getHistoryDir(entry.agentId);
   const file = getHistoryFile(entry.agentId, entry.sessionId);
   const line = JSON.stringify(entry) + '\n';
   await appendFile(file, line, 'utf-8');

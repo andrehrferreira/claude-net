@@ -1,3 +1,5 @@
+import { Buffer } from 'node:buffer';
+
 /**
  * Read all stdin as a string and parse as JSON.
  */
