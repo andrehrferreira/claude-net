@@ -33,7 +33,9 @@
       "Bash(git add:*)",
       "Read(//c/Users/Bolado/.claude/**)",
       "Bash(find ~/.claude/plugins/rulebook -type f -name *.json)",
-      "Read(//f/Node/hivellm/rulebook/**)"
+      "Read(//f/Node/hivellm/rulebook/**)",
+      "Bash(npm pack:*)",
+      "Bash(npm publish:*)"
     ],
     "additionalDirectories": [
       "\\tmp"
