@@ -30,7 +30,8 @@
       "Bash(echo \"Exit code: $?\")",
       "Bash(node dist/cli.js install)",
       "Bash(node bin/claude-net.js status)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Read(//c/Users/Bolado/.claude/**)"
     ],
     "additionalDirectories": [
       "\\tmp"

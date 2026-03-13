@@ -182,6 +182,10 @@ async function install(): Promise<void> {
       config.plugins.push('claude-net');
     }
 
+    // Enable the plugin in Claude Code
+    config.enabledPlugins = config.enabledPlugins || {};
+    config.enabledPlugins['claude-net'] = true;
+
     mkdirSync(resolve(homedir(), '.claude'), { recursive: true });
     writeFileSync(claudeConfigPath, JSON.stringify(config, null, 2));
     console.log('  ✓ Registered in ~/.claude/settings.json');
@@ -210,6 +214,8 @@ async function uninstall(): Promise<void> {
       const content = readFileSync(claudeConfigPath, 'utf-8');
       const config = JSON.parse(content);
       config.plugins = (config.plugins || []).filter((p: string) => p !== 'claude-net');
+      config.enabledPlugins = config.enabledPlugins || {};
+      delete config.enabledPlugins['claude-net'];
       writeFileSync(claudeConfigPath, JSON.stringify(config, null, 2));
       console.log('[claude-net] ✓ Unregistered from ~/.claude/settings.json');
     }
